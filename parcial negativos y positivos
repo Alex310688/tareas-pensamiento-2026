@@ -1,0 +1,46 @@
+def analizar_lista(lista):
+    pares = 0
+    impares = 0
+    positivos = 0
+    negativos = 0
+    ceros = 0
+
+    for i in lista:
+    
+        if i % 2 == 0:
+            pares += 1
+        else:
+            impares += 1
+
+        if i > 0:
+            positivos += 1
+        elif i < 0:
+            negativos += 1
+        else:
+            ceros += 1
+
+    suma = sum(lista)
+    mayor = max(lista)
+    menor = min(lista)
+
+    print("\n--- RESULTADOS ---")
+    print("Lista ingresada:", lista)
+    print(f"Pares: {pares}")
+    print(f"Impares: {impares}")
+    print(f"Positivos: {positivos}")
+    print(f"Negativos: {negativos}")
+    print(f"Ceros: {ceros}")
+    print(f"Suma total: {suma}")
+    print(f"Número mayor: {mayor}")
+    print(f"Número menor: {menor}")
+
+
+
+n = int(input("Ingrese tamaño de la lista: "))
+lista = []
+
+for i in range(n):
+    datos = int(input(f"Ingrese dato {i+1}: "))
+    lista.append(datos)
+
+analizar_lista(lista)
