@@ -1,0 +1,130 @@
+universidad = {
+    "Ingenieria": [],
+    "Arquitectura": [],
+    "Medicina": []
+}
+
+
+def mostrar_estudiantes():
+
+    print("\n===== ESTUDIANTES REGISTRADOS =====")
+
+    for facultad in universidad:
+
+        print(f"\nFACULTAD: {facultad}")
+
+        if universidad[facultad] == []:
+            print("No hay estudiantes registrados.")
+
+        else:
+            for i in range(len(universidad[facultad])):
+
+                estudiante = universidad[facultad][i]
+
+                print(f"{i+1}. Carnet: {estudiante[0]}")
+                print(f"   Nombre: {estudiante[1]}")
+                print(f"   Edad: {estudiante[2]}")
+
+
+def insertar_estudiante():
+
+    facultad = input("\nIngrese facultad: ").capitalize()
+
+    if facultad in universidad:
+
+        carnet = input("Ingrese carnet: ")
+        nombre = input("Ingrese nombre: ")
+        edad = int(input("Ingrese edad: "))
+
+        universidad[facultad].append((carnet, nombre, edad))
+
+        print("\nEstudiante agregado correctamente.")
+
+    else:
+        print("La facultad no existe.")
+
+
+def modificar_estudiante():
+
+    mostrar_estudiantes()
+
+    facultad = input("\nIngrese facultad del estudiante: ").capitalize()
+
+    if facultad in universidad:
+
+        posicion = int(input("Número del estudiante a modificar: ")) - 1
+
+        if posicion >= 0 and posicion < len(universidad[facultad]):
+
+            carnet = input("Nuevo carnet: ")
+            nombre = input("Nuevo nombre: ")
+            edad = int(input("Nueva edad: "))
+
+            universidad[facultad][posicion] = (carnet, nombre, edad)
+
+            print("\nEstudiante modificado correctamente.")
+
+        else:
+            print("Número inválido.")
+
+    else:
+        print("Facultad incorrecta.")
+
+
+def eliminar_estudiante():
+
+    mostrar_estudiantes()
+
+    facultad = input("\nIngrese facultad: ").capitalize()
+
+    if facultad in universidad:
+
+        posicion = int(input("Número del estudiante a eliminar: ")) - 1
+
+        if posicion >= 0 and posicion < len(universidad[facultad]):
+
+            universidad[facultad].pop(posicion)
+
+            print("\nEstudiante eliminado correctamente.")
+
+        else:
+            print("Número inválido.")
+
+    else:
+        print("Facultad incorrecta.")
+
+
+def menu():
+
+    while True:
+
+        print("\n=========== UNIVERSIDAD URL ===========")
+        print("1. Insertar estudiante")
+        print("2. Mostrar estudiantes")
+        print("3. Modificar estudiante")
+        print("4. Eliminar estudiante")
+        print("5. Salir")
+
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            insertar_estudiante()
+
+        elif opcion == "2":
+            mostrar_estudiantes()
+
+        elif opcion == "3":
+            modificar_estudiante()
+
+        elif opcion == "4":
+            eliminar_estudiante()
+
+        elif opcion == "5":
+            print("\nSaliendo del sistema...")
+            break
+
+        else:
+            print("Opción inválida.")
+
+
+menu()
